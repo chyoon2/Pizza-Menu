@@ -34,7 +34,7 @@ function Pie(size, topping) {
 function displayCost (totalCost) {
   let displayPrice = $("#outcome");
   $("#outcome").show();
-  (displayPrice).text(`$totalCost`);
+  (displayPrice).append(` $${totalCost}`);
 }
 
 $(document).ready(function() {
