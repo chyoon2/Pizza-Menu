@@ -7,12 +7,26 @@ Pizza.prototype.addInfo= function(pizza, pie) {
   pizza.pizzaOrder.push(pie);
 }
 
-Pizza.prototype.cost = function (pizza, pie) {
-  // pizza.pizzaOrder.forEach(function(){
-  let pieSize = pizza.pizzaOrder[0].size;
-  let numOfTopping = pizza.pizzaOrder[0].topping["length"];
-  let costOfSize = 0;
+
+
+
+// function dedCost (pizza,pie) {
+   
   
+// }
+
+
+
+
+
+
+Pizza.prototype.cost = function (pizza, pie) {
+  for (const property in pizza.pizzaOrder) {
+    const pieSize = pizza.pizzaOrder[property].size;
+    const numOfTopping = pizza.pizzaOrder[property].topping["length"];
+    console.log(numOfTopping)
+    let costOfSize = 0;
+
   if (pieSize === "Small") {
     costOfSize = 10;
   } else if (pieSize === "Medium"){
@@ -25,8 +39,9 @@ Pizza.prototype.cost = function (pizza, pie) {
   
   const sum = costOfSize + parseInt(numOfTopping);
   pizza.priceOfAll.push(sum)
-}
 
+}
+}
 function Pie(size, topping) {
   this.size = size;
   this.topping = topping; 
