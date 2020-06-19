@@ -7,24 +7,12 @@ Pizza.prototype.addInfo= function(pizza, pie) {
   pizza.pizzaOrder.push(pie);
 }
 
-
-
-
-// function dedCost (pizza,pie) {
-   
-  
-// }
-
-
-
-
-
-
 Pizza.prototype.cost = function (pizza, pie) {
+
   for (const property in pizza.pizzaOrder) {
     const pieSize = pizza.pizzaOrder[property].size;
     const numOfTopping = pizza.pizzaOrder[property].topping["length"];
-    console.log(numOfTopping)
+    console.log(property)
     let costOfSize = 0;
 
   if (pieSize === "Small") {
@@ -39,17 +27,19 @@ Pizza.prototype.cost = function (pizza, pie) {
   
   const sum = costOfSize + parseInt(numOfTopping);
   pizza.priceOfAll.push(sum)
+  }
+}
 
-}
-}
 function Pie(size, topping) {
   this.size = size;
   this.topping = topping; 
 }
+
 // User interface
 
 function displayCost (pizza) {
   let finalTotal = pizza.priceOfAll.reduce((a, b) => a + b, 0)
+  console.log(finalTotal)
   let displayPrice = $("#subtotal");
   $("#outcome").show();
   (displayPrice).text(` $${finalTotal}`);
@@ -66,4 +56,6 @@ $(document).ready(function() {
     totalCost =pizza.cost(pizza, pie);
     displayCost(pizza);
   });
+
+  
 });
