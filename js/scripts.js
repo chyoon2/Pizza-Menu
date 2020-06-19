@@ -5,7 +5,7 @@ function Pizza() {
 }
 
 Pizza.prototype.addInfo= function(pizza, pie) {
-  Pizza.pizzaOrder.push(pie);
+  pizza.pizzaOrder.push(pie);
 }
 
 function Pie(size, topping) {
@@ -34,17 +34,13 @@ Pizza.prototype.cost = function (pizza) {
 
 // User interface 
 $(document).ready(function() {
-  let pizza = new Pizza();
-  
   $("form#form-one").submit(function(event) {
     event.preventDefault();
-
+    let pizza = new Pizza();
     const inputSize = $("#size").val();
-    console.log(inputSize)
-    const inputTopping= $("input:checkbox[name=work-transportation]:checked");
-    
+    let inputTopping =$("input:checkbox[name=topping]:checked")
     let pie = new Pie(inputSize, inputTopping);
-    pizza.addInfo(pie);
+    pizza.addInfo(pizza, pie);
 
   });
 });
