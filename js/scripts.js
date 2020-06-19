@@ -1,5 +1,6 @@
 function Pizza() {
   this.pizzaOrder = [];
+  this.priceOfAll=[]
 }
 
 Pizza.prototype.addInfo= function(pizza, pie) {
@@ -10,31 +11,33 @@ Pizza.prototype.cost = function (pizza, pie) {
   // pizza.pizzaOrder.forEach(function(){
   let pieSize = pizza.pizzaOrder[0].size;
   let numOfTopping = pizza.pizzaOrder[0].topping["length"];
-  let = costOfSize= 0;
+  let costOfSize = 0;
   
-  if (pieSize === "small") {
+  if (pieSize === "Small") {
     costOfSize = 10;
-  } else if (pieSize === "medium"){
+  } else if (pieSize === "Medium"){
     costOfSize = 12;
-  } else if (pieSize === "large"){
+  } else if (pieSize === "Large"){
     costOfSize = 14;
-  } else {
+  } else if (pieSize === "Xlarge") {
     costOfSize = 16;
-  }
-  let totalCost = costOfSize + parseInt(numOfTopping)
-  console.log(totalCost)
-  return totalCost
+  } else {}
+  
+  const sum = costOfSize + parseInt(numOfTopping);
+  pizza.priceOfAll.push(sum)
 }
+
 function Pie(size, topping) {
   this.size = size;
   this.topping = topping; 
 }
 // User interface
 
-function displayCost (totalCost) {
-  let displayPrice = $("#outcome");
+function displayCost (pizza) {
+  let finalTotal = pizza.priceOfAll.reduce((a, b) => a + b, 0)
+  let displayPrice = $("#subtotal");
   $("#outcome").show();
-  (displayPrice).append(` $${totalCost}`);
+  (displayPrice).text(` $${finalTotal}`);
 }
 
 $(document).ready(function() {
@@ -46,6 +49,6 @@ $(document).ready(function() {
     let pie = new Pie(inputSize, inputTopping);
     pizza.addInfo(pizza, pie);
     totalCost =pizza.cost(pizza, pie);
-    displayCost(totalCost);
+    displayCost(pizza);
   });
 });

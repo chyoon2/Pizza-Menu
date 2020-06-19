@@ -15,7 +15,8 @@
       <form id="form-one">
         <div class="form-group"><br>
           <label>Select a Size</label>
-          <select class="form-control" id="size">
+          <select class="form-control" id="size" required>
+            <option disabled selected value> -- select an option -- </option>
             <option>Small</option>
             <option>Medium </option>
             <option>Large</option>
@@ -36,7 +37,7 @@
             <!-- <button type="submit" id= "size-button" class="btn-primary">Add Pie</button>  -->
         </div>
       </form>   
-      <div id="outcome">Your cost:<span id ="Subtotal"></span></div>
+      <div id="outcome">Your cost:<span id ="subtotal"></span></div>
     </div>
   </body>
 </html>
