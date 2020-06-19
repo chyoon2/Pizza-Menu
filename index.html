@@ -12,7 +12,31 @@
   <body>
     <h1>MudPie Menu</h1>
     <div class= "container">
-      <
+      <div class= "row">
+        <div class = "col-md-6" id= "menu1">
+          <form id="form-one">
+            <div class="form-group"><br>
+              <label>Select a Size</label>
+              <select class="form-control" id="size">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>X-large</option>
+              </select><br>
+              <button type="submit" id= "size-button" class="btn-warning">Submit Size</button>
+              <div class="topping form"><br>
+                <label>Select from the following toppings</label>
+                <input type="checkbox" name="toppingtopping" value="bike"> Pepperoni<br>
+                <input type="checkbox" name="topping" value="car"> Pineapple<br>
+                <input type="checkbox" name="topping" value="carpool"> Basil<br><br>
+                <button type="submit" id= "topping-button" class="btn-primary">Submit Topping</button> 
+                
+              </div><br>
+                <button type="reset" class="btn-danger">Reset</button>
+            </div>
+          </form>   
+        </div>
+      </div>
     </div>
   </body>
 </html>

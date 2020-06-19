@@ -1,8 +1,10 @@
+// Pizza backend logic
+
 function Pizza() {
   this.pizzaOrder = [];
 }
 
-Pizza.prototype.addInfo= function(pie) {
+Pizza.prototype.addInfo= function(pizza, pie) {
   Pizza.pizzaOrder.push(pie);
 }
 
@@ -30,12 +32,15 @@ Pizza.prototype.cost = function (pizza) {
   totalCost = sizeCost + (numOftopping * 2)
 }
 
+// User interface 
 $(document).ready(function() {
   let pizza = new Pizza();
   
-  $("form#transportation_survey").submit(function(event) {
+  $("form#form-one").submit(function(event) {
     event.preventDefault();
-    const inputSize = $("input:checkbox[name=work-transportation]:checked");
+
+    const inputSize = $("#size").val();
+    console.log(inputSize)
     const inputTopping= $("input:checkbox[name=work-transportation]:checked");
     
     let pie = new Pie(inputSize, inputTopping);
