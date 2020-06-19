@@ -1,5 +1,3 @@
-// Pizza backend logic
-
 function Pizza() {
   this.pizzaOrder = [];
 }
@@ -8,39 +6,41 @@ Pizza.prototype.addInfo= function(pizza, pie) {
   pizza.pizzaOrder.push(pie);
 }
 
-function Pie(size, topping) {
-  this.size = size;
-  this.topping = topping; 
-}
-
-Pizza.prototype.cost = function (pizza) {
+Pizza.prototype.cost = function (pizza, pie) {
   let small = 10;
   let medium = 12;
   let large = 14;
   let xlarge = 16;
-
   let topping = 2;
 
-  pizzaOrder.forEach(function(numOfPizza){
-    Pizza.pizzaOrder[numOfPizza].forEach(function(desc) {
-      sizeCost = Pizza.pizzaOrder[numOfPizza].size[desc];
+  pizza.pizzaOrder.forEach(function(element){
+    let sizeCost = pizza.pizzaOrder[0].size;
+      
       console.log(sizeCost)
-      numOfTopping = Pizza.pizzaOrder[numOfPizza].topping["length"];
-      console.log(pizzaOrder)
-    });
+
+      numOfTopping = pizza.pizzaOrder[0].topping["length"]
+      console.log(numOfTopping)
   });
-  totalCost = sizeCost + (numOftopping * 2)
+  // totalCost = sizeCost + (numOftopping * 2)
 }
 
-// User interface 
+function Pie(size, topping) {
+  this.size = size;
+  this.topping = topping; 
+}
+let pizza = new Pizza();
+
+// User interface
 $(document).ready(function() {
   $("form#form-one").submit(function(event) {
     event.preventDefault();
     let pizza = new Pizza();
     const inputSize = $("#size").val();
+    console.log(inputSize)
     let inputTopping =$("input:checkbox[name=topping]:checked")
     let pie = new Pie(inputSize, inputTopping);
     pizza.addInfo(pizza, pie);
-
+    console.log(pizza)
+    pizza.cost(pizza, pie);
   });
 });
