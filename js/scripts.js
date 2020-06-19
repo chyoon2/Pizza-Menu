@@ -7,20 +7,27 @@ Pizza.prototype.addInfo= function(pizza, pie) {
 }
 
 Pizza.prototype.cost = function (pizza, pie) {
-  let small = 10;
-  let medium = 12;
-  let large = 14;
-  let xlarge = 16;
-  let topping = 2;
 
   pizza.pizzaOrder.forEach(function(element){
-    let sizeCost = pizza.pizzaOrder[0].size;
-      
-      console.log(sizeCost)
-
-      numOfTopping = pizza.pizzaOrder[0].topping["length"]
-      console.log(numOfTopping)
+    let pieSize = pizza.pizzaOrder[0].size;
+    let numOfTopping = pizza.pizzaOrder[0].topping["length"];
+    let = costOfSize= 0;
+    
+    if (pieSize === "small") {
+      costOfSize = 10;
+    } else if (pieSize === "medium"){
+      costOfSize = 12;
+    } else if (pieSize === "large"){
+      costOfSize = 14;
+    } else {
+      costOfSize = 16;
+    }
+    let totalCost = costOfSize + parseInt(numOfTopping)
+    
+    console.log(totalCost)
+    // totalCost.push
   });
+
   // totalCost = sizeCost + (numOftopping * 2)
 }
 
@@ -28,7 +35,7 @@ function Pie(size, topping) {
   this.size = size;
   this.topping = topping; 
 }
-let pizza = new Pizza();
+
 
 // User interface
 $(document).ready(function() {
@@ -36,11 +43,9 @@ $(document).ready(function() {
     event.preventDefault();
     let pizza = new Pizza();
     const inputSize = $("#size").val();
-    console.log(inputSize)
     let inputTopping =$("input:checkbox[name=topping]:checked")
     let pie = new Pie(inputSize, inputTopping);
     pizza.addInfo(pizza, pie);
-    console.log(pizza)
     pizza.cost(pizza, pie);
   });
 });
