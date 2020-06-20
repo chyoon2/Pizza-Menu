@@ -7,7 +7,7 @@ Pizza.prototype.addInfo= function(pizza, pie) {
   pizza.pizzaOrder.push(pie);
 }
 
-Pizza.prototype.cost = function (pizza, pie) {
+Pizza.prototype.cost = function (pizza) {
 
   for (const property in pizza.pizzaOrder) {
     const pieSize = pizza.pizzaOrder[property].size;
@@ -35,8 +35,6 @@ function Pie(size, topping) {
   this.topping = topping; 
 }
 
-// User interface
-
 function displayCost (pizza) {
   let finalTotal = pizza.priceOfAll.reduce((a, b) => a + b, 0)
   console.log(finalTotal)
@@ -46,16 +44,19 @@ function displayCost (pizza) {
 }
 
 $(document).ready(function() {
+  
+  let pizza = new Pizza();
+
   $("form#form-one").submit(function(event) {
     event.preventDefault();
-    let pizza = new Pizza();
     const inputSize = $("#size").val();
     let inputTopping =$("input:checkbox[name=topping]:checked")
     let pie = new Pie(inputSize, inputTopping);
     pizza.addInfo(pizza, pie);
-    totalCost =pizza.cost(pizza, pie);
-    displayCost(pizza);
   });
 
-  
+  $("button#price-button").click(function(){
+    totalCost =pizza.cost(pizza);
+    displayCost(pizza);
+  });
 });
