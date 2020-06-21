@@ -63,7 +63,6 @@ console.dir(toppings)
       let showy = pizza.pizzaOrder[num].size;
       $(".topping-form").append(parseInt([num]+ 1 ) + ". " + showy + " pie<br>");
     }
-    
   }
 
   $("button#price-button").click(function(){
